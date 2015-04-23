@@ -69,11 +69,7 @@ static PyObject* vector_to_array(vector<string> vec){
     for(size_t i = 0; i < vec.size(); i++){
         PyObject* elem = Py_BuildValue("s", vec[i].c_str());
         if(elem == NULL){
-           for(size_t j = 0; j < i; j++){
-               Py_DECREF(PyList_GetItem(res, j));
-           }
            Py_DECREF(res);
-           PyErr_SetString(PyExc_RuntimeError, "failed build string");
            return NULL;
         }
         PyList_SET_ITEM(res, i, elem);
@@ -97,11 +93,7 @@ static PyObject* python_da_Trie_enumerate(python_da_TrieObject *self, PyObject *
         for(size_t i = 0; i < result.size(); i++){
             PyObject* elem = Py_BuildValue("si", result[i].first.c_str(), result[i].second);
             if(elem == NULL){
-                for(size_t j = 0; j < i; j++){
-                   Py_DECREF(PyList_GetItem(res, j));
-                }
                 Py_DECREF(res);
-                PyErr_SetString(PyExc_RuntimeError, "failed build string");
                 return NULL;
             }
             PyList_SET_ITEM(res, i, elem);
@@ -120,10 +112,7 @@ static PyObject* python_da_Trie_exact_match(python_da_TrieObject *self, PyObject
         }
         int id = self->da->exact_match(word);
         PyObject* result = Py_BuildValue("i", id);
-        if(result == NULL){
-            PyErr_SetString(PyExc_RuntimeError, "failed build result");
-            return NULL;
-        }
+        if(result == NULL) return NULL;
         return result;
     }catch(bad_alloc){
         return PyErr_NoMemory();
