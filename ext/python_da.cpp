@@ -286,8 +286,7 @@ initpython_da(void)
     if (PyType_Ready(&python_da_TrieType) < 0)
         return;
 
-    module = Py_InitModule3("python_da", python_da_methods,
-                       "Python Double Array Module.");
+    module = Py_InitModule3("python_da", python_da_methods, "Python Double Array Module.");
 
     Py_INCREF(&python_da_TrieType);
     PyModule_AddObject(module, "Trie", (PyObject *)&python_da_TrieType);
