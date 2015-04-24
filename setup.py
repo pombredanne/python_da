@@ -1,6 +1,6 @@
 from setuptools import setup, Extension
 
-version = '0.0.3'
+version = '0.0.4'
 name = 'python_da'
 short_description = "`python_da` is Python Double Array Library."
 long_description = """\
