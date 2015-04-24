@@ -198,7 +198,7 @@ static PyObject* python_da_Trie_build(python_da_TrieObject *self, PyObject *args
         }
         size_t size = PyList_Size(list); 
         vector<string> words;
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < static_cast<int>(size); i++){
             PyObject* elem = PyList_GetItem(list, i);
             if(!PyString_Check(elem)){
                 PyErr_BadArgument();
