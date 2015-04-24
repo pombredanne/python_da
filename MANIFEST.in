@@ -1,1 +1,1 @@
-recursive-includ libda *.hpp
+recursive-include libda *.hpp
