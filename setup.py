@@ -33,7 +33,12 @@ classifiers = [
   "Topic :: Software Development :: Libraries"
 ]
 
-module = Extension('python_da', ['ext/python_da.cpp'], include_dirs=["libda/include"])
+module = Extension('python_da', [
+  'ext/python_da.cpp', 
+  'libda/include/double_array_internal.hpp',
+  'libda/include/double_array.hpp',
+  'libda/include/utf8.hpp'
+], include_dirs=["libda/include"])
 
 setup(name=name,
       version=version,
