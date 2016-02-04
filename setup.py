@@ -37,6 +37,9 @@ module = Extension('python_da', [
   'ext/python_da.cpp'
 ], include_dirs=["libda/include"])
 
+if 'PyPy' in sys.version
+    module.libraries.append("stdc++")
+
 setup(name=name,
       version=version,
       description=short_description,
