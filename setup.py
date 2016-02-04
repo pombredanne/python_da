@@ -1,6 +1,7 @@
+import sys
 from setuptools import setup, Extension
 
-version = '0.0.5'
+version = '0.0.6'
 name = 'python_da'
 short_description = "`python_da` is Python Double Array Library."
 long_description = """\
@@ -21,6 +22,10 @@ Setup
 
 History
 -------
+0.0.6 (2016-02-04)
+------------------
+* added support pypy
+
 0.0.1 (2015-04-24)
 ------------------
 * first release
@@ -37,7 +42,7 @@ module = Extension('python_da', [
   'ext/python_da.cpp'
 ], include_dirs=["libda/include"])
 
-if 'PyPy' in sys.version
+if 'PyPy' in sys.version:
     module.libraries.append("stdc++")
 
 setup(name=name,
